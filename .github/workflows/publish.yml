@@ -1,0 +1,53 @@
+name: HubTo Abstraction Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Extract Version
+        id: get_version
+        run: |
+          echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_ENV
+
+      - name: Restore
+        run: dotnet restore HubTo.Abstraction.csproj
+
+      - name: Pack
+        run: |
+          dotnet pack HubTo.Abstraction.csproj \
+            -c Release -o out \
+            /p:PackageVersion=${{ env.VERSION }}
+
+      - name: Add NuGet Source
+        run: |
+          dotnet nuget add source \
+            "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" \
+            --name "github" \
+            --username ${{ github.repository_owner }} \
+            --password ${{ secrets.PACKAGE_TOKEN }} \
+            --store-password-in-clear-text
+
+      - name: Push
+        run: |
+          dotnet nuget push out/*.nupkg \
+            --api-key ${{ secrets.PACKAGE_TOKEN }} \
+            --source "github"
