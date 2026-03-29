@@ -1,4 +1,5 @@
-﻿using HubTo.Abstraction.Models.Transport;
+﻿using HubTo.Abstraction.Auth;
+using HubTo.Abstraction.Models.Transport;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace HubTo.Abstraction.Registrars
     {
         string RegistrarType { get; }
 
-        void SetContext(IArtifactRegistry artifactRegistry, IStoragePlugin storage);
+        void SetContext(IArtifactRegistry artifactRegistry, IStoragePlugin storage, IHubToAuthValidator authValidator);
         Task<PluginResponse> ProcessRequestAsync(PluginRequest request, CancellationToken cancellationToken = default);
         bool CanHandle(string path, string method);
     }
