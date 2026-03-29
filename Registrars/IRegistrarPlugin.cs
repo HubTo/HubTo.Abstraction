@@ -1,4 +1,4 @@
-﻿using HubTo.Abstraction.Models;
+﻿using HubTo.Abstraction.Models.Transport;
 using System.Threading;
 using System.Threading.Tasks;
 

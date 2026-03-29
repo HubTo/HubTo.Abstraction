@@ -1,4 +1,4 @@
-﻿namespace HubTo.Abstraction.Models
+﻿namespace HubTo.Abstraction.Models.Common
 {
     public class HealthStatus
     {

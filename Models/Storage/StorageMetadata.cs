@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HubTo.Abstraction.Models
+namespace HubTo.Abstraction.Models.Storage
 {
     public sealed class StorageMetadata
     {

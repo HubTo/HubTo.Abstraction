@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HubTo.Abstraction.Models
+namespace HubTo.Abstraction.Models.Domain
 {
     public sealed class ArtifactInfo
     {

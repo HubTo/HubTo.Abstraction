@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace HubTo.Abstraction.Models
+namespace HubTo.Abstraction.Models.Transport
 {
     public sealed class PluginResponse
     {

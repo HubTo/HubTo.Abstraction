@@ -1,4 +1,4 @@
-﻿using HubTo.Abstraction.Models;
+﻿using HubTo.Abstraction.Models.Domain;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,5 +20,4 @@ namespace HubTo.Abstraction.Registrars
         Task<Stream> GetVersionStreamAsync(Guid artifactId, string version, CancellationToken cancellationToken = default);
         Task UnlistVersionAsync(Guid artifactId, string version, CancellationToken cancellationToken = default);
     }
-
 }

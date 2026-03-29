@@ -1,6 +1,6 @@
 ﻿using HubTo.Abstraction.Enums;
 using HubTo.Abstraction.Logging;
-using HubTo.Abstraction.Models;
+using HubTo.Abstraction.Models.Common;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
